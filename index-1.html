@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f7e9f4">
+<title>A Little World for Phi Nish ♡</title>
+<style>
+:root{
+  --pink:#f4bfd8;--rose:#d875a5;--lav:#c9b8ee;--blue:#c6e3f5;
+  --cream:#fffaf5;--ink:#59465f;--muted:#8d7891;--white:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(180deg,#fff7fb 0%,#f5f0ff 52%,#f3faff 100%);color:var(--ink);font-family:Georgia,"Times New Roman",serif;overflow-x:hidden}
+button,a{font:inherit}
+button{cursor:pointer}
+#sparkles{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.spark{position:absolute;color:#d99abb;opacity:.55;animation:float 9s linear infinite}
+@keyframes float{0%{transform:translateY(105vh) rotate(0);opacity:0}15%{opacity:.6}85%{opacity:.5}100%{transform:translateY(-10vh) rotate(240deg);opacity:0}}
+main,.topbar,footer{position:relative;z-index:1}
+.topbar{position:sticky;top:0;background:#fffaf0df;backdrop-filter:blur(12px);border-bottom:1px solid #efdce9;padding:10px 14px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap;z-index:5}
+.topbar a{font:600 12px Arial,sans-serif;text-decoration:none;color:#8d6687;padding:8px 10px;border-radius:20px}
+.topbar a:hover{background:#f8e3f0}
+section{padding:64px 18px;max-width:940px;margin:auto}
+.hero{min-height:88vh;display:grid;place-items:center;text-align:center;padding-top:70px}
+.hero-card{max-width:720px;width:100%;padding:38px 22px;border:1px solid #efd8e8;border-radius:32px;background:#ffffffb8;box-shadow:0 18px 60px #d7b8d533}
+.eyebrow{font:700 11px Arial,sans-serif;letter-spacing:3px;text-transform:uppercase;color:#b16e9b}
+h1,h2,h3{font-weight:normal;line-height:1.15}
+h1{font-size:clamp(42px,9vw,76px);margin:14px 0;color:#9f6595}
+h2{font-size:clamp(30px,6vw,46px);text-align:center;color:#a36d9a;margin:0 0 14px}
+h3{font-size:25px;color:#a36d9a;margin:8px 0}
+p{line-height:1.8}
+.lead{font-size:18px;max-width:570px;margin:12px auto 24px}
+.small{font:13px Arial,sans-serif;color:var(--muted);line-height:1.6}
+.btn{border:0;border-radius:30px;padding:13px 21px;background:linear-gradient(120deg,#e9a9ca,#c8b7ee);color:#fff;font:700 14px Arial,sans-serif;box-shadow:0 7px 18px #cba5cc55;transition:.2s}
+.btn:hover{transform:translateY(-2px);filter:saturate(1.1)}
+.btn.secondary{background:#fff;color:#a36d9a;border:1px solid #edcfe2;box-shadow:none}
+.pawrow{font-size:27px;letter-spacing:8px;margin:20px 0}
+.section-intro{text-align:center;max-width:620px;margin:0 auto 28px}
+.card{background:#ffffffc9;border:1px solid #eedbea;border-radius:24px;padding:23px;box-shadow:0 12px 35px #c9b5d522}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
+.note{background:#fff8fc;border:1px dashed #e5b9d2;border-radius:20px;padding:18px}
+.note button{width:100%;text-align:left;border:0;background:transparent;color:#a36d9a;font-size:17px;padding:0}
+.note p{display:none;margin-bottom:0;font-size:15px}
+.note.open p{display:block}
+.cake-wrap{text-align:center;padding:25px 10px}
+.cake{font-size:90px;filter:drop-shadow(0 8px 8px #d6a5c655);animation:bob 3s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px)}}
+.candleline{font-size:30px;margin:0 0 8px}
+.reasons .card{text-align:center}
+.reasons .emoji{font-size:30px}
+.reason-num{font:700 11px Arial,sans-serif;letter-spacing:2px;color:#c28db3}
+.letter{font-size:17px;line-height:2;white-space:pre-line}
+.giftbox{font-size:100px;display:block;margin:8px auto;transition:.3s}
+.giftbox:hover{transform:rotate(-7deg) scale(1.06)}
+.hidden-gift{display:none;background:#fff8fc;border-radius:20px;padding:20px;margin-top:16px}
+.hidden-gift.show{display:block;animation:appear .5s ease}
+@keyframes appear{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.uploadbox{border:2px dashed #e3bfd8;border-radius:18px;padding:18px;text-align:center;background:#fff9fc}
+.uploadbox input{max-width:100%;font:13px Arial,sans-serif}
+.photos{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-top:16px}
+.photos img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:16px;border:4px solid white;box-shadow:0 5px 15px #aa8ca533}
+.musicrow{display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap}
+input[type=file]{color:#876d86}
+footer{text-align:center;padding:35px 15px 55px;color:#a47c9c;font-size:14px}
+hr{border:0;border-top:1px solid #efdce9;margin:24px 0}
+.pill{display:inline-block;background:#f9e8f2;color:#a16c96;border-radius:20px;padding:7px 12px;font:12px Arial,sans-serif}
+@media(max-width:560px){section{padding:48px 15px}.hero-card{padding:30px 17px}.topbar{gap:1px}.topbar a{font-size:11px;padding:8px}.lead{font-size:16px}}
+</style>
+</head>
+<body>
+<div id="sparkles" aria-hidden="true"></div>
+<nav class="topbar">
+  <a href="#home">Home</a><a href="#cake">Cake</a><a href="#letter">Letter</a><a href="#notes">Notes</a><a href="#reasons">Reasons</a><a href="#memories">Memories</a><a href="#gift">Gift</a>
+</nav>
+<main>
+<section class="hero" id="home">
+ <div class="hero-card">
+  <div class="eyebrow">a little birthday universe • made with love</div>
+  <div class="pawrow">🐾 ✨ 🐱 🐶 ✨ 🐾</div>
+  <h1>Happy Birthday,<br>Phi Nish ♡</h1>
+  <p class="lead">A tiny world made just for you — filled with warm wishes, little paws, sweet surprises and a whole lot of love from miles away.</p>
+  <span class="pill">four months • countless little feelings</span>
+  <p><a class="btn" href="#cake" style="display:inline-block;text-decoration:none">Come celebrate with me ↓</a></p>
+  <p class="small">P.S. The cats and puppies are very excited to see you. 🐾</p>
+ </div>
+</section>
+
+<section id="cake">
+ <div class="section-intro"><div class="eyebrow">make a wish</div><h2>A cake just for you 🎂</h2><p>Close your eyes, make the biggest wish, and tap the button when you're ready.</p></div>
+ <div class="card cake-wrap">
+  <div class="candleline" id="flames">🕯️ 🕯️ 🕯️</div>
+  <div class="cake">🎂</div>
+  <p id="wishText">Three little candles, a million wishes for you.</p>
+  <button class="btn" id="blow">Blow out the candles ✨</button>
+  <p class="small" id="cakeReply">Make a wish, Phi Nish. You deserve beautiful things.</p>
+ </div>
+ <p style="text-align:center;font-size:35px;margin-top:22px">🐱 🎈 🐶 🎁 🐾</p>
+</section>
+
+<section id="letter">
+ <div class="section-intro"><div class="eyebrow">from my heart to yours</div><h2>A little letter for you 💌</h2></div>
+ <div class="card">
+  <p class="letter">Hey Phi Nish,
+
+Happy birthday to youuu! 🥳💗
+
+It's funny how someone can come into your life and, in what feels like no time, become such a comforting part of it. We've known each other for around four months, but I'm genuinely so grateful that our paths crossed.
+
+Even though we're online friends and there's distance between us, you've become my safe place. Thank you for being someone I can talk to, laugh with and feel comfortable around. I hope you know how special you are, even on the days when you don't feel it yourself.
+
+I wish I could hand you the biggest birthday cake, surround you with the cutest cats and puppies, and give you a real hug today. Since I can't do that from here, I made you this little corner of the internet instead. I hope it makes you smile.
+
+May this new year bring you gentle days, loud laughter, good surprises, dreams that come true and people who treat your heart kindly. Never forget that you deserve all the happiness in the world.
+
+Thank you for being YOU. I'm so lucky to know you.
+
+Happy birthday once again, my safe place. 🫶
+
+With lots of love,
+Your online bestie ♡</p>
+  <hr><p style="text-align:right;color:#b078a0">P.S. Sending approximately 1,000,000 virtual hugs. ♡</p>
+ </div>
+</section>
+
+<section id="notes">
+ <div class="section-intro"><div class="eyebrow">little reminders for later</div><h2>Open when... 📨</h2><p>Tap each envelope whenever you need that particular reminder.</p></div>
+ <div class="grid">
+  <div class="note"><button onclick="toggleNote(this)">💗 Open when you're sad <span>＋</span></button><p>Hey, take a breath. You don't have to pretend to be okay every second. You matter, your feelings matter, and you deserve gentleness. Sending you the biggest virtual hug. 🫂</p></div>
+  <div class="note"><button onclick="toggleNote(this)">🌙 Open when you can't sleep <span>＋</span></button><p>Put your worries down for a little while. Let tomorrow wait. I hope your mind gets quiet and your dreams are soft. Goodnight, sleepyhead. 🌙</p></div>
+  <div class="note"><button onclick="toggleNote(this)">🐾 Open when you need a hug <span>＋</span></button><p>Imagine a tiny puppy running toward you, a kitten curling up beside you, and the warmest hug wrapped around you. That's me sending love through the screen. 🐶🐱</p></div>
+  <div class="note"><button onclick="toggleNote(this)">✨ Open when you doubt yourself <span>＋</span></button><p>Please don't forget how lovely you are. You don't need to be perfect to be wonderful. I hope you see even a little of the good that other people can see in you.</p></div>
+  <div class="note"><button onclick="toggleNote(this)">🥹 Open when you miss me <span>＋</span></button><p>Distance is annoying, isn't it? But here's a reminder: somewhere on your screen is a friend cheering for you, thinking of you and wishing you well. 💌</p></div>
+  <div class="note"><button onclick="toggleNote(this)">🎀 Open just because <span>＋</span></button><p>No special reason. No big occasion. Just a reminder that I'm glad you exist, glad we met, and glad you're part of my little world.</p></div>
+ </div>
+</section>
+
+<section id="reasons" class="reasons">
+ <div class="section-intro"><div class="eyebrow">a tiny list</div><h2>10 reasons you're special 🌷</h2><p>And honestly, I could keep going.</p></div>
+ <div class="grid">
+  <div class="card"><div class="emoji">💗</div><div class="reason-num">01</div><p>You make people feel less alone.</p></div>
+  <div class="card"><div class="emoji">🌼</div><div class="reason-num">02</div><p>Your presence brings comfort.</p></div>
+  <div class="card"><div class="emoji">😂</div><div class="reason-num">03</div><p>You make ordinary moments brighter.</p></div>
+  <div class="card"><div class="emoji">🫶</div><div class="reason-num">04</div><p>You can make a screen feel less distant.</p></div>
+  <div class="card"><div class="emoji">✨</div><div class="reason-num">05</div><p>You deserve every good thing coming your way.</p></div>
+  <div class="card"><div class="emoji">🐱</div><div class="reason-num">06</div><p>You are officially worthy of a thousand kittens.</p></div>
+  <div class="card"><div class="emoji">🐶</div><div class="reason-num">07</div><p>You deserve puppy-level unconditional love.</p></div>
+  <div class="card"><div class="emoji">🌈</div><div class="reason-num">08</div><p>You make friendship feel like a safe little place.</p></div>
+  <div class="card"><div class="emoji">🦋</div><div class="reason-num">09</div><p>You are one of a kind, exactly as you are.</p></div>
+  <div class="card"><div class="emoji">🎂</div><div class="reason-num">10</div><p>Because the world is better with you in it.</p></div>
+ </div>
+</section>
+
+<section id="memories">
+ <div class="section-intro"><div class="eyebrow">our little corner</div><h2>Memories & moments 📸</h2><p>Add your favourite screenshots, photos or silly memories here. They stay on the device viewing this page; choose them before sharing if you want them included for her.</p></div>
+ <div class="card">
+  <div class="uploadbox">
+   <p>📷 Choose photos from your phone</p>
+   <input id="photoInput" type="file" accept="image/*" multiple>
+   <p class="small">Tip: use screenshots of funny chats, favourite moments, or pictures you both love.</p>
+  </div>
+  <div class="photos" id="photoPreview"></div>
+ </div>
+</section>
+
+<section id="gift">
+ <div class="section-intro"><div class="eyebrow">a little something for you</div><h2>Your surprise gift 🎁</h2><p>One tap. One tiny present. All yours.</p></div>
+ <div class="card" style="text-align:center">
+  <button class="giftbox" id="giftBtn" aria-label="Open your gift">🎁</button>
+  <button class="btn" id="openGift">Open your gift!</button>
+  <div class="hidden-gift" id="giftMessage">
+   <div style="font-size:48px">🐱 💐 🐶</div>
+   <h3>A lifetime supply of virtual hugs!</h3>
+   <p>Redeemable whenever you need a smile, a little encouragement, or someone to remind you that you're appreciated. No expiry date. 💗</p>
+   <p style="font-size:25px">🎀 🧁 🌈 🫶</p>
+  </div>
+ </div>
+</section>
+
+<section id="wishes">
+ <div class="section-intro"><div class="eyebrow">for the year ahead</div><h2>Things I wish for you 🌟</h2></div>
+ <div class="card">
+  <p>🌷 Days that feel peaceful and safe.</p>
+  <p>🌈 People who celebrate you and respect your heart.</p>
+  <p>🦋 Courage to chase the things you dream about.</p>
+  <p>☀️ More reasons to laugh until your cheeks hurt.</p>
+  <p>💌 Little surprises when you least expect them.</p>
+  <p>🐾 All the cats, dogs, cuddles and comfort you could ever want.</p>
+  <p>✨ And above all, a year that is kind to you.</p>
+ </div>
+</section>
+
+<section id="final">
+ <div class="hero-card" style="margin:auto;text-align:center">
+  <div class="pawrow">🐾 🐱 💗 🐶 🐾</div>
+  <div class="eyebrow">one last thing</div>
+  <h2 style="margin-top:15px">Miles apart,<br>close at heart.</h2>
+  <p class="lead">Four months may sound like a short time, but you have become someone I am so thankful to know. Thank you for being my safe place, Phi Nish.</p>
+  <h3>Happy Birthday! 🎂</h3>
+  <p style="font-size:27px">I'M SO GLAD YOU EXIST. ♡</p>
+  <button class="btn secondary" onclick="window.scrollTo({top:0,behavior:'smooth'})">Read it all again ↑</button>
+ </div>
+</section>
+</main>
+<footer>Made with love, little paws and a million wishes for Phi Nish. ♡<br><span class="small">A birthday hug sent across the distance.</span></footer>
+<script>
+const sparkles=document.getElementById('sparkles');
+for(let i=0;i<24;i++){const s=document.createElement('span');s.className='spark';s.textContent=['✦','♡','✧','·'][i%4];s.style.left=(Math.random()*100)+'%';s.style.animationDelay=(Math.random()*9)+'s';s.style.animationDuration=(7+Math.random()*8)+'s';s.style.fontSize=(12+Math.random()*16)+'px';sparkles.appendChild(s)}
+function toggleNote(btn){const n=btn.parentElement;n.classList.toggle('open');btn.querySelector('span').textContent=n.classList.contains('open')?'－':'＋'}
+let blown=false;
+document.getElementById('blow').addEventListener('click',()=>{blown=!blown;document.getElementById('flames').textContent=blown?'💨 💨 💨':'🕯️ 🕯️ 🕯️';document.getElementById('wishText').textContent=blown?'YAY! Your wish is on its way to the universe. ✨':'Three little candles, a million wishes for you.';document.getElementById('cakeReply').textContent=blown?'May this year bring you everything your heart is hoping for. 💗':'Make a wish, Phi Nish. You deserve beautiful things.';document.getElementById('blow').textContent=blown?'Light the candles again 🕯️':'Blow out the candles ✨';if(blown)confetti()});
+function confetti(){for(let i=0;i<35;i++){const e=document.createElement('span');e.textContent=['💗','✨','🎉','🌸','🐾'][i%5];e.style.cssText=`position:fixed;left:${Math.random()*100}vw;top:-30px;font-size:${16+Math.random()*15}px;z-index:20;pointer-events:none;transition:transform 2.8s linear,opacity 2.8s linear`;document.body.appendChild(e);requestAnimationFrame(()=>{e.style.transform=`translateY(${window.innerHeight+80}px) rotate(${Math.random()*500}deg)`;e.style.opacity='0'});setTimeout(()=>e.remove(),3000)}}
+document.getElementById('openGift').addEventListener('click',()=>{document.getElementById('giftMessage').classList.toggle('show');document.getElementById('openGift').textContent=document.getElementById('giftMessage').classList.contains('show')?'Close your gift ♡':'Open your gift!';if(document.getElementById('giftMessage').classList.contains('show'))confetti()});
+document.getElementById('giftBtn').addEventListener('click',()=>document.getElementById('openGift').click());
+document.getElementById('photoInput').addEventListener('change',e=>{const box=document.getElementById('photoPreview');box.innerHTML='';[...e.target.files].forEach(file=>{const img=document.createElement('img');img.alt='A friendship memory';img.src=URL.createObjectURL(file);box.appendChild(img)})});
+</script>
+</body>
+</html>
